@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://flight-sb-env-1.eba-jzudwwfd.eu-north-1.elasticbeanstalk.com/api/flights';
+const API_URL = 'https://flight-sb-env-1.eba-jzudwwfd.eu-north-1.elasticbeanstalk.com/api/flights';
 
 export const getAllDates = () => axios.get(`${API_URL}/dates`);
 export const getAllFlights = () => axios.get(`${API_URL}/all`);
