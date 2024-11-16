@@ -208,19 +208,19 @@ export default function Navbar({ onData }) {
                 </li> */}
 
                 <li className="nav-item px-1">
-                  <a className="nav-link" href="/">
+                  <a className="nav-link custom-visibility" href="/">
                     Home
                   </a>
                 </li>
                 {userDetails ? (
                   <>
                     <li className="nav-item dropdown px-1">
-                      <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i className="fa-solid fa-user fa-lg align-content-center me-2"></i>
+                      <a className="nav-link custom-visibility dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i className="fa-solid  fa-user fa-lg align-content-center me-2"></i>
                         {userDetails.name}
                       </a>
                       <ul className="dropdown-menu bg-dark text-white">
-                        <li className=""><button className="dropdown-item bg-dark text-white" onClick={handleLogout}>
+                        <li className=""><button className="dropdown-item bg-dark text-white custom-visibility" onClick={handleLogout}>
                           Logout
                         </button></li>
                       </ul>
@@ -228,7 +228,7 @@ export default function Navbar({ onData }) {
                   </>
                 ) : (
                   <li className="nav-item px-1">
-                    <a className="nav-link" href="#">
+                    <a className="nav-link custom-visibility" href="#">
                       <i className="fa-solid fa-user fa-lg align-content-center me-2"></i>
                       <Link className="text-decoration-none text-dark" to="/signin">Login/SignUp</Link>
                     </a>

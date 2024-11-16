@@ -74,6 +74,45 @@
   font-weight: 700;
 }
 
+/* Basic button styling for notif-btn */
+.notif-btn {
+  background: linear-gradient(135deg, #4a6e96, #1e3c56); /* Dark blue gradient */
+  color: #fff; /* White text color */
+  font-size: 16px; /* Font size for readability */
+  padding: 12px 24px; /* Padding inside the button */
+  border: 2px solid transparent; /* Transparent border to make hover/focus visible */
+  border-radius: 25px; /* Rounded corners for a modern look */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: all 0.3s ease; /* Smooth transition for background, shadow, and scale */
+  text-align: center; /* Centered text */
+  display: inline-block; /* Inline-block for button */
+  text-decoration: none; /* Remove underline if button is a link */
+  font-weight: 600; /* Bold text */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Subtle shadow for a soft 3D effect */
+}
+
+/* Hover effect for notif-btn */
+.notif-btn:hover {
+  background: linear-gradient(135deg, #3a5f82, #172c42); /* Darker gradient on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
+  transform: translateY(-3px); /* Slight lift effect on hover */
+}
+
+/* Focus effect for accessibility */
+.notif-btn:focus {
+  outline: none; /* Remove default focus outline */
+  border-color: #4a6e96; /* Change border color to match the gradient */
+  box-shadow: 0 0 0 4px rgba(74, 110, 150, 0.3); /* Soft blue focus ring */
+}
+
+/* Active state when the button is clicked */
+.notif-btn:active {
+  background: linear-gradient(135deg, #2a4a66, #14283a); /* Even darker gradient when clicked */
+  transform: translateY(0); /* Reset the lift effect */
+  box-shadow: none; /* Remove shadow when clicked */
+}
+
+
 
 
 .gradient-text-1 {

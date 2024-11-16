@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import "./StatusCard.css";
-import { auth, db, requestPermission } from '../firebase/firebase';
-import { messaging } from '../firebase/firebase';
-import { collection, doc, setDoc } from 'firebase/firestore';
-import { getToken } from 'firebase/messaging';
-import { ToastContainer, toast } from 'react-toastify';
+import { auth, db, requestPermission } from "../firebase/firebase";
+import { messaging } from "../firebase/firebase";
+import { collection, doc, setDoc } from "firebase/firestore";
+import { getToken } from "firebase/messaging";
+import { ToastContainer, toast } from "react-toastify";
 
 import { formatDate, formatTime } from "../service/FlightService";
 import { fetchUserData } from "../firebase/userhandler";
@@ -23,7 +23,7 @@ export default function ({ data }) {
   const subscribeToUpdates = async (dataItem2) => {
     if (!userDetails) {
       console.log("User is not logged in");
-      toast.warning('Log in first!', {
+      toast.warning("Log in first!", {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -37,18 +37,25 @@ export default function ({ data }) {
     let token = null;
 
     try {
-
       try {
         await requestPermission();
-        token = await getToken(messaging, { vapidKey: 'BBSUwsdPcZjHwW1mm5INmtWWJfJ_s7NztgzvFhWf5QBzupvC-QOJifT8u7k9SpcVYEFYAjKvjh6PshOaJliAT1E' });
+        token = await getToken(messaging, {
+          vapidKey:
+            "BBSUwsdPcZjHwW1mm5INmtWWJfJ_s7NztgzvFhWf5QBzupvC-QOJifT8u7k9SpcVYEFYAjKvjh6PshOaJliAT1E",
+        });
       } catch (permissionError) {
-        console.log('Notification permission denied:', permissionError);
+        console.log("Notification permission denied:", permissionError);
       }
       // Create a unique ID for the subscription document
       const subscriptionId = new Date().toISOString(); // Or use a UUID
       const flightId = data.id;
       // Reference to the user subscriptions subcollection
-      const userSubscriptionsRef = collection(db, 'UserSubscriptions', `${userDetails.uid}`, 'Subscriptions');
+      const userSubscriptionsRef = collection(
+        db,
+        "UserSubscriptions",
+        `${userDetails.uid}`,
+        "Subscriptions"
+      );
 
       // Simplified example for debugging
       const docData = {
@@ -56,18 +63,18 @@ export default function ({ data }) {
         fcmToken: token,
         userDetails: {
           uid: userDetails.uid,
-          email: userDetails.email // Ensure this is serializable
+          email: userDetails.email, // Ensure this is serializable
         },
-        subscribedAt: new Date()
+        subscribedAt: new Date(),
       };
 
-      console.log('Saving document data:', docData);
+      console.log("Saving document data:", docData);
 
       // Save the subscription to Firestore
       await setDoc(doc(userSubscriptionsRef, subscriptionId), docData);
 
       console.log("Subscription saved to Firestore successfully");
-      toast.success('Subscribed Successfully!', {
+      toast.success("Subscribed Successfully!", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -81,15 +88,17 @@ export default function ({ data }) {
     }
   };
 
-
   return (
     <>
-      <div className="status-wrapper">
-        <div className="status-container  mt-5">
+      <div className="status-wrapper mt-3">
+        <div className="status-container ">
           <div className="status-card col-11 col-md-9 h-50 p-2 text-center text-white ">
             <div className="row mx-0 p-2">
               <div className="col col-lg-4 text-start">
-                <span className="fs-3 fw-bold gradient-text-2"> {data.flightNumber}</span>
+                <span className="fs-3 fw-bold gradient-text-2">
+                  {" "}
+                  {data.flightNumber}
+                </span>
                 <br />
                 <span className="fw-bold gradient-text-2">
                   {data.airline.name}
@@ -104,7 +113,10 @@ export default function ({ data }) {
                       {data.departureAirport.code}
                     </span>{" "}
                     <br />{" "}
-                    <span className="gradient-text-9 fw-bold"> {data.departureAirport.city}</span>
+                    <span className="gradient-text-9 fw-bold">
+                      {" "}
+                      {data.departureAirport.city}
+                    </span>
                   </div>
                   <div className="col col-lg-4 d-flex align-items-center justify-content-center gradient-icon">
                     {" "}
@@ -116,19 +128,24 @@ export default function ({ data }) {
                       {data.arrivalAirport.code}
                     </span>{" "}
                     <br />{" "}
-                    <span className="gradient-text-9 fw-bold">{data.arrivalAirport.city}</span>{" "}
+                    <span className="gradient-text-9 fw-bold">
+                      {data.arrivalAirport.city}
+                    </span>{" "}
                   </div>
                 </div>
               </div>
 
               <div className="col col-lg-4 text-end">
-                <span className="fs-3 fw-bold gradient-text-7">{data.flightStatus.status}</span>
+                <span className="fs-3 fw-bold gradient-text-7">
+                  {data.flightStatus.status}
+                </span>
                 <br />{" "}
-                <span className="gradient-text-4 fw-bold">{data.flightStatus.description}</span>{" "}
+                <span className="gradient-text-4 fw-bold">
+                  {data.flightStatus.description}
+                </span>{" "}
               </div>
             </div>
             <div className="mx-0 d-flex justify-content-center">
-
               {/* left small card */}
               <div className="col col-lg-6">
                 <div className="col col-lg-11 text-center status-item ms-md-4 mx-md-2">
@@ -138,16 +155,19 @@ export default function ({ data }) {
                     </span>
                     <br />
 
-                    <span className="fw-bold text-dark"> {data.departureAirport.city} , {data.departureAirport.country}</span>
-
+                    <span className="fw-bold text-dark">
+                      {" "}
+                      {data.departureAirport.city} ,{" "}
+                      {data.departureAirport.country}
+                    </span>
                   </div>
                   <div className="py-2 px-md-2">
-                    <span className="fw-bold text-dark">
-                      Departure Time
-                    </span>
+                    <span className="fw-bold text-dark">Departure Time</span>
 
                     <br />
-                    <span className="fw-bold gradient-text-4 fs-4">{formatDate(data.scheduledDepartureTime)}</span>
+                    <span className="fw-bold gradient-text-4 fs-4">
+                      {formatDate(data.scheduledDepartureTime)}
+                    </span>
                   </div>
                   <div className="row mx-0 w-100 p-2 border-3 border-bottom border-white">
                     <div className="col col-lg-6">
@@ -156,7 +176,9 @@ export default function ({ data }) {
                         <span className="fw-bold text-dark">Scheduled</span>
                       </div>
                       <div>
-                        <span className="fw-bold gradient-text-4 fs-3">{formatTime(data.scheduledDepartureTime)}</span>
+                        <span className="fw-bold gradient-text-4 fs-3">
+                          {formatTime(data.scheduledDepartureTime)}
+                        </span>
                       </div>
                     </div>
                     <div className="col col-lg-5">
@@ -164,7 +186,9 @@ export default function ({ data }) {
                         <span className="fw-bold text-dark">Actual</span>
                       </div>
                       <div>
-                        <span className="fw-bold gradient-text-4 fs-3">{formatTime(data.actualDepartureTime)}</span>
+                        <span className="fw-bold gradient-text-4 fs-3">
+                          {formatTime(data.actualDepartureTime)}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -174,7 +198,9 @@ export default function ({ data }) {
                         <span className="fw-bold text-dark">Terminal</span>
                       </div>
                       <div>
-                        <span className="fw-bold gradient-text-4 fs-3">{data.departureTerminal}</span>
+                        <span className="fw-bold gradient-text-4 fs-3">
+                          {data.departureTerminal}
+                        </span>
                       </div>
                     </div>
                     <div className="col col-lg-6 p-2">
@@ -182,7 +208,9 @@ export default function ({ data }) {
                         <span className="fw-bold text-dark">Gate</span>
                       </div>
                       <div>
-                        <span className="fw-bold gradient-text-4 fs-3">{data.departureGate}</span>
+                        <span className="fw-bold gradient-text-4 fs-3">
+                          {data.departureGate}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -199,7 +227,10 @@ export default function ({ data }) {
               <div className="col col-lg-6">
                 <div className="col col-lg-11 text-center status-item ms-md-4 mx-md-2">
                   <div className="py-2 px-md-2">
-                    <span className="fw-bold text-dark"> {data.arrivalAirport.name} </span>
+                    <span className="fw-bold text-dark">
+                      {" "}
+                      {data.arrivalAirport.name}{" "}
+                    </span>
                     <br />
                     <span className="fw-bold text-dark">
                       {data.arrivalAirport.city}, {data.arrivalAirport.country}
@@ -208,7 +239,10 @@ export default function ({ data }) {
                   <div className="py-2 px-md-2">
                     <span className="fw-bold text-dark"> Arrival Time</span>
                     <br />
-                    <span className="fw-bold fs-4 gradient-text-4"> {formatDate(data.scheduledArrivalTime)} </span>
+                    <span className="fw-bold fs-4 gradient-text-4">
+                      {" "}
+                      {formatDate(data.scheduledArrivalTime)}{" "}
+                    </span>
                   </div>
                   <div className="row mx-0 w-100 p-2 border-3 border-bottom border-white">
                     <div className="col col-lg-6">
@@ -216,7 +250,10 @@ export default function ({ data }) {
                         <span className="fw-bold text-dark"> Scheduled</span>
                       </div>
                       <div>
-                        <span className="fw-bold fs-3 gradient-text-4"> {formatTime(data.scheduledArrivalTime)} </span>
+                        <span className="fw-bold fs-3 gradient-text-4">
+                          {" "}
+                          {formatTime(data.scheduledArrivalTime)}{" "}
+                        </span>
                       </div>
                     </div>
                     <div className="col col-lg-5">
@@ -224,7 +261,9 @@ export default function ({ data }) {
                         <span className="fw-bold text-dark">Estimated</span>
                       </div>
                       <div>
-                        <span className="fw-bold fs-3 gradient-text-4">{formatTime(data.actualArrivalTime)}</span>
+                        <span className="fw-bold fs-3 gradient-text-4">
+                          {formatTime(data.actualArrivalTime)}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -234,7 +273,9 @@ export default function ({ data }) {
                         <span className="fw-bold text-dark">Terminal</span>
                       </div>
                       <div>
-                        <span className="fw-bold fs-3 gradient-text-4">{data.arrivalTerminal}</span>
+                        <span className="fw-bold fs-3 gradient-text-4">
+                          {data.arrivalTerminal}
+                        </span>
                       </div>
                     </div>
                     <div className="col col-lg-6 p-2">
@@ -242,7 +283,9 @@ export default function ({ data }) {
                         <span className="fw-bold text-dark">Gate</span>
                       </div>
                       <div>
-                        <span className="fw-bold fs-3 gradient-text-4">{data.arrivalGate}</span>
+                        <span className="fw-bold fs-3 gradient-text-4">
+                          {data.arrivalGate}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -250,10 +293,21 @@ export default function ({ data }) {
               </div>
             </div>
           </div>
-          {/* <div className='align-content-start h-100'>
-            <button onClick={subscribeToUpdates} className='btn btn-dark' style={{ width: "minimum-content" }}> <span > <i class="fa-solid fa-bell fs-4 "></i> </span> <br /> <span style={{ fontSize: "12px" }}> Get  Updates </span>   </button>
-            <ToastContainer />
-          </div> */}
+        </div>
+        <div className="d-flex justify-content-center pt-4">
+          <button
+            onClick={subscribeToUpdates}
+            className="notif-btn"
+            style={{ width: "minimum-content" }}
+          >
+            {" "}
+            <span>
+              {" "}
+              <i class="fa-solid fa-bell fs-4 "></i>{" "}
+            </span>{" "}
+            <br /> <span style={{ fontSize: "12px" }}> Get Updates </span>{" "}
+          </button>
+          <ToastContainer />
         </div>
       </div>
     </>
