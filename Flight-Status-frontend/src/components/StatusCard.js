@@ -86,7 +86,7 @@ export default function ({ data }) {
     <>
       <div className="status-wrapper">
         <div className="status-container  mt-5">
-          <div className="status-card col-12 col-md-9 h-50 p-2 text-center text-white ">
+          <div className="status-card col-11 col-md-9 h-50 p-2 text-center text-white ">
             <div className="row mx-0 p-2">
               <div className="col col-lg-4 text-start">
                 <span className="fs-3 fw-bold gradient-text-2"> {data.flightNumber}</span>
@@ -132,7 +132,7 @@ export default function ({ data }) {
               {/* left small card */}
               <div className="col col-lg-6">
                 <div className="col col-lg-11 text-center status-item ms-md-4 mx-md-2">
-                  <div className="p-2">
+                  <div className="py-2 px-md-2">
                     <span className="fw-bold text-dark">
                       {data.departureAirport.name}
                     </span>
@@ -141,9 +141,9 @@ export default function ({ data }) {
                     <span className="fw-bold text-dark"> {data.departureAirport.city} , {data.departureAirport.country}</span>
 
                   </div>
-                  <div className="p-2">
+                  <div className="py-2 px-md-2">
                     <span className="fw-bold text-dark">
-                      Flight Departure Times
+                      Departure Time
                     </span>
 
                     <br />
@@ -198,15 +198,15 @@ export default function ({ data }) {
 
               <div className="col col-lg-6">
                 <div className="col col-lg-11 text-center status-item ms-md-4 mx-md-2">
-                  <div className="p-2">
+                  <div className="py-2 px-md-2">
                     <span className="fw-bold text-dark"> {data.arrivalAirport.name} </span>
                     <br />
                     <span className="fw-bold text-dark">
                       {data.arrivalAirport.city}, {data.arrivalAirport.country}
                     </span>
                   </div>
-                  <div className="p-2">
-                    <span className="fw-bold text-dark"> Flight Arrival Times</span>
+                  <div className="py-2 px-md-2">
+                    <span className="fw-bold text-dark"> Arrival Time</span>
                     <br />
                     <span className="fw-bold fs-4 gradient-text-4"> {formatDate(data.scheduledArrivalTime)} </span>
                   </div>
