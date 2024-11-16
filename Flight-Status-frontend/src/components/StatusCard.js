@@ -86,7 +86,7 @@ export default function ({ data }) {
     <>
       <div className="status-wrapper">
         <div className="status-container  mt-5">
-          <div className="status-card w-75 h-50 p-2 text-center text-white ">
+          <div className="status-card col-12 col-md-9 h-50 p-2 text-center text-white ">
             <div className="row mx-0 p-2">
               <div className="col col-lg-4 text-start">
                 <span className="fs-3 fw-bold gradient-text-2"> {data.flightNumber}</span>
@@ -131,7 +131,7 @@ export default function ({ data }) {
 
               {/* left small card */}
               <div className="col col-lg-6">
-                <div className="col col-lg-11 text-center status-item ms-4 mx-2">
+                <div className="col col-lg-11 text-center status-item ms-md-4 mx-md-2">
                   <div className="p-2">
                     <span className="fw-bold text-dark">
                       {data.departureAirport.name}
@@ -197,7 +197,7 @@ export default function ({ data }) {
               {/* right small card */}
 
               <div className="col col-lg-6">
-                <div className="col col-lg-11 text-center status-item mx-2 ">
+                <div className="col col-lg-11 text-center status-item ms-md-4 mx-md-2">
                   <div className="p-2">
                     <span className="fw-bold text-dark"> {data.arrivalAirport.name} </span>
                     <br />
@@ -250,10 +250,10 @@ export default function ({ data }) {
               </div>
             </div>
           </div>
-          <div className='align-content-start h-100'>
+          {/* <div className='align-content-start h-100'>
             <button onClick={subscribeToUpdates} className='btn btn-dark' style={{ width: "minimum-content" }}> <span > <i class="fa-solid fa-bell fs-4 "></i> </span> <br /> <span style={{ fontSize: "12px" }}> Get  Updates </span>   </button>
             <ToastContainer />
-          </div>
+          </div> */}
         </div>
       </div>
     </>
