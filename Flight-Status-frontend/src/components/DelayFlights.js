@@ -31,7 +31,7 @@ export default function DelayFlights({ onItemClick }) {
   );
 
   return (
-    <div className="col-lg-3 delay-wrapper m-3">
+    <div className="col-9 col-md-6 col-lg-3 delay-wrapper mt-5 m-3">
       <div className="card-container">
         <div className="card">
           <div className="d-flex align-content-center justify-content-center">
