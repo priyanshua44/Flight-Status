@@ -32,10 +32,10 @@ html, body {
 
 .flight-tracker-text {
   position: absolute;
-  left: 10vw;
-  top: 30vh;
-  /* z-index: 1; */
-  text-align: center;
+  left: 4vw;
+  top: 40vh;
+  z-index: -1;
+  text-align: end;
   width: 80%;
 }
 
