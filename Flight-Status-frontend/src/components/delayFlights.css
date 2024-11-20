@@ -58,7 +58,7 @@
 }
 
 .card:hover {
-  transform: scale(1.05); /* Slightly enlarge on hover */
+  /* transform: scale(1.05); Slightly enlarge on hover */
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Increase shadow on hover */
 }
 
@@ -82,7 +82,7 @@
 
 .item:hover {
   background: rgba(0, 0, 0, 0.3); /* Darker background on hover */
-  transform: scale(1.02); /* Slightly enlarge on hover */
+  transform: scale(1.02); 
 }
 
 .live {
