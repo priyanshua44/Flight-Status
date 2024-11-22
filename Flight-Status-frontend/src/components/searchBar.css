@@ -5,7 +5,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
   padding: 5px;
   position: sticky;
-  z-index: 1000;
+  z-index: 100;
   /* width: auto; */
 }
 
