@@ -99,13 +99,13 @@ export default function SearchByAirline({ isVisible, onClose, width, onLinkClick
             </label>
             <div className="mb-1 mx-2">
               <div className="row bg-dark px-1 input-div">
-                <div className="col col-lg-1 align-content-center">
+                <div className="col-1 align-content-center">
                   <i
                     class="fa-solid fa-plane-departure fa-lg text-white "
                     style={{ color: "#ffffff" }}
                   ></i>
                 </div>
-                <div className="col col-lg-11">
+                <div className="col-11">
                   <input
                     type="text"
                     className="form-control bg-dark py-2 text-white border-0 input-field"
@@ -134,13 +134,13 @@ export default function SearchByAirline({ isVisible, onClose, width, onLinkClick
             </label>
             <div className="mb-1 mx-2">
               <div className="row bg-dark px-1 input-div">
-                <div className="col col-lg-1 align-content-center">
+                <div className="col-1 align-content-center">
                   <i
                     class="fa-regular fa-calendar fa-lg text-white "
                     style={{ color: "#ffffff" }}
                   ></i>
                 </div>
-                <div className="col col-lg-11">
+                <div className="col-11">
                   {" "}
                   <select
                     className="form-control bg-dark py-2 text-white border-0 input-field" value={input2} onChange={(e) => setInput2(e.target.value)}
