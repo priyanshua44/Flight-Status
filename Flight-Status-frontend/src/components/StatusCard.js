@@ -93,6 +93,22 @@ export default function ({ data }) {
       <div className="status-wrapper mt-3">
         <div className="status-container ">
           <div className="status-card col-11 col-md-9 h-50 p-2 text-center text-white ">
+            {/* Cross Button */}
+            <button
+            className="gradient-text-9"
+              onClick={() => (window.location.href = "/")} // Redirect to homepage
+              style={{
+                position: "absolute",
+                top: "-4px",
+                right: "4px",
+                backgroundColor: "transparent",
+                border: "none",
+                fontSize: "30px",
+                cursor: "pointer",
+              }}
+            >
+              &times; {/* Cross symbol */}
+            </button>
             <div className="row mx-0 p-2">
               <div className="col col-lg-4 text-start">
                 <span className="fs-3 fw-bold gradient-text-2">
