@@ -1,9 +1,9 @@
 .routeResultBox-box {
     position: absolute;
     top: 90%; /* Position below the search bar */
-    left: 2%;
+    left: 3%;
     width: 100%; /* Match width of the search bar */
-    background-color: #000000a8;
+    background-color: #000000c7;
     /* border: 1px solid #ddd; */
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
